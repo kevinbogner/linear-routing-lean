@@ -1,0 +1,18 @@
+import LinearRouting
+
+#print axioms LinearRouting.linearEntanglement
+#print axioms LinearRouting.phaseProtocol_guarantees
+#print axioms LinearRouting.ExactPhase.prepareSource_action
+#print axioms LinearRouting.ExactPhase.exactPhaseRoutingProcess_resource_eq_eprPairs
+#print axioms LinearRouting.ExactPhase.aliceRecovered_exact
+#print axioms LinearRouting.ExactPhase.bobRecovered_exact
+#print axioms LinearRouting.ExactPhase.aliceSendChannel_classical
+#print axioms LinearRouting.ExactPhase.bobSendChannel_classical
+#print axioms LinearRouting.ExactPhase.aliceQuantumMessageBits
+#print axioms LinearRouting.ExactPhase.classicalMessageBits
+#print axioms LinearRouting.ExactPhase.bobQuantumMessageBits
+#print axioms LinearRouting.ExactPhase.commutation
+#print axioms LinearRouting.ExactPhase.workPhase_eq_pauliZ_product
+#print axioms LinearRouting.ExactPhase.oneBlock
+#print axioms LinearRouting.ExactPhase.outcomeMix_eq
+#print axioms LinearRouting.ExactPhase.workPairAmplitude_eq_kronecker_mulVec
