@@ -2,7 +2,7 @@
 
 Lean 4 formalization of the paper
 
-> Kevin Bogner, *Linear entanglement suffices for f-routing* (arXiv identifier to be added).
+> Kevin Bogner, *Linear entanglement suffices for f-routing*, [arXiv:2611.30947](https://arxiv.org/abs/2611.30947).
 
 The paper shows that \(2n+2\) shared EPR pairs suffice for \(f\)-routing of
 every Boolean function \(f\) on two \(n\)-bit inputs, at the price of an
