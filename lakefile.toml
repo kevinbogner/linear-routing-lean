@@ -15,4 +15,7 @@ scope = "leanprover-community"
 rev = "v4.32.2"
 
 [[lean_lib]]
+name = "Statement"
+
+[[lean_lib]]
 name = "LinearRouting"

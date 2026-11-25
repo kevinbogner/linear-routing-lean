@@ -1,5 +1,6 @@
 import LinearRouting
 
+#print axioms LinearRouting.theorem1
 #print axioms LinearRouting.linearEntanglement
 #print axioms LinearRouting.phaseProtocol_guarantees
 #print axioms LinearRouting.ExactPhase.prepareSource_action

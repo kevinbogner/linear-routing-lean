@@ -10,13 +10,43 @@ exponentially long quantum message. This project proves Theorem 1 of the
 paper and its Lemmas 2 and 3. The source tree is self-contained apart from
 Mathlib, and the proofs use only Lean's three standard axioms.
 
-## Theorem 1
+## The statement to check
 
-`LinearRouting.linearEntanglement` is Theorem 1, stated as the existence of a
-strategy with the three properties of the theorem. What the paper calls a
-strategy is a protocol in the Lean code. The strategy of the paper is
+`Statement.lean`, at the top of the repository, states Theorem 1 as the
+proposition
+`LinearRouting.Statement.Theorem1`. The file imports only Mathlib, contains no
+proof and has fewer than 200 lines. A reader who checks this one file knows
+what the formalization proves, because Lean checks everything else.
+`LinearRouting.theorem1` in `LinearRouting/StatementProof.lean` proves the
+proposition.
+
+The statement file follows Section 2 of the paper and defines \(f\)-routing
+for arbitrary finite registers.
+
+| In the paper | In `Statement.lean` |
+| --- | --- |
+| A quantum operation. | `Channel`, a family of Kraus matrices with the completeness relation |
+| A strategy: the shared state and the operations of Alice and Bob. | `Strategy` |
+| Each operation depends only on the input of its party. A recovery acts on the kept register and the received message. | The types of the four operations in `Strategy` |
+| The qubit that the selected party ends with. | `Strategy.aliceRecovers`, `Strategy.bobRecovers` |
+| \(2n+2\) EPR pairs. | `eprPairs (2 * n + 2)` |
+| Classical bits in a message. | `Channel.ClassicalIn` |
+
+`Theorem1` says that for every \(n\) and every Boolean function \(f\) there is
+a strategy with the three properties of the theorem. Its shared state is
+`eprPairs (2 * n + 2)`. The selected party recovers every matrix \(\rho\)
+unchanged, so the map from the qubit to the recovered qubit is the identity
+channel. Alice's message is a register of \(2^{n+1}+1\) qubits and \(3n+2\)
+classical bits, and Bob's message is \(3n+2\) classical bits. The paper states
+the theorem for \(n\ge 1\), and the Lean statement also covers \(n=0\).
+
+## Theorem 1 on the registers of the construction
+
+`LinearRouting.linearEntanglement` states the same theorem on the registers
+that the construction uses, and `theorem1` follows from it by relabelling
+these registers as bit strings. What the paper calls a strategy is a protocol
+in this part of the code. The strategy of the paper is
 `LinearRouting.phaseProtocol`, and `RoutingGuarantees` lists its properties.
-The Lean statement also covers \(n=0\).
 
 | Property in the paper | Lean declaration |
 | --- | --- |
@@ -53,7 +83,7 @@ lake build
 lake env lean Audit.lean
 ```
 
-`Audit.lean` prints the axioms behind the numbered results and behind the
+`Audit.lean` prints the axioms behind `theorem1`, the numbered results and the
 lemmas that connect their statements to the circuit. The only axioms are
 `propext`, `Classical.choice` and `Quot.sound`.
 
@@ -61,4 +91,5 @@ lemmas that connect their statements to the circuit. The only axioms are
 
 As the paper discloses, the formalization was written by GPT-6.2 Sol (OpenAI)
 in a research session directed by the author, and Claude Fable 5.2 (Anthropic)
-reviewed the formal statement.
+reviewed the formal statement. Claude Fable 5.2 later wrote the statement file
+`Statement.lean` and its proof in `LinearRouting/StatementProof.lean`.
